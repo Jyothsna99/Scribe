@@ -1,0 +1,41 @@
+
+    <div class="row background">
+        <div class="offset-sm-4 col-sm-4">
+            <div class="card text-blank">
+                <div class="card-body">
+                    <div class="card-title text-center">Login Form</div>
+                    <div class="card-text">
+                        <form class="form-group" [formGroup]="myform" (ngSubmit)="onSubmit(myform)">
+                            <div class="form-group col-sm-12">
+                                <input type="text" class="form-control" placeholder="Enter mail" [formControl]="myform.controls['email']">
+                            </div>
+                            <div class="alert alert-danger" *ngIf="(!myform.controls['email'].valid&&myform.controls['email'].touched)">
+                                A valid email is required
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <input type="password" class="form-control" placeholder="Enter password" [formControl]="myform.controls['password']">
+                            </div>
+                            <div class="alert alert-danger" *ngIf="(!myform.controls['password'].valid&&myform.controls['password'].touched)">
+                                password is required
+                            </div>
+                            <div class="form-group col-sm-12 " >
+                                <button type="submit" class="btn btn-warning col-sm-12" [disabled]="!myform.valid">submit</button>
+                            </div>
+                        </form>
+                        <div class="text-center mt-3" >
+                            <button class="btn btn-link" routerLink="/home"style="color: #fff;">
+                                Don't have an account?sign up!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-danger" *ngIf="userError">
+                {{userError.message}}
+            </div>
+            <div class="alert alert-success" *ngIf="message.length>0">
+                {{message}}
+            </div>
+        </div>
+    </div>
+
